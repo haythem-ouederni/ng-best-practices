@@ -70,12 +70,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "angular-best-practices-example:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -128,6 +122,126 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "connection": {
+      "root": "projects/connection",
+      "sourceRoot": "projects/connection/src",
+      "projectType": "library",
+      "prefix": "con",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/connection/tsconfig.lib.json",
+            "project": "projects/connection/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/connection/src/test.ts",
+            "tsConfig": "projects/connection/tsconfig.spec.json",
+            "karmaConfig": "projects/connection/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/connection/tsconfig.lib.json",
+              "projects/connection/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "connection-standalone": {
+      "root": "projects/connection-standalone",
+      "sourceRoot": "projects/connection-standalone/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/common-standalone",
+            "index": "projects/connection-standalone/src/index.html",
+            "main": "projects/connection-standalone/src/main.ts",
+            "polyfills": "projects/connection-standalone/src/polyfills.ts",
+            "tsConfig": "projects/connection-standalone/tsconfig.app.json",
+            "assets": [
+              "projects/connection-standalone/src/favicon.ico",
+              "projects/connection-standalone/src/assets"
+            ],
+            "styles": [
+              "projects/connection-standalone/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/connection/src/lib/modules"
+              ]
+            },
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/connection-standalone/src/environments/environment.ts",
+                  "with": "projects/connection-standalone/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "connection-standalone:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "connection-standalone:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/connection-standalone/tsconfig.app.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@connection": [
+        "projects/connection/src/public_api"
+      ],
+      "@connection/*": [
+        "projects/connection/src/*"
+      ]
+    }
   }
 }
