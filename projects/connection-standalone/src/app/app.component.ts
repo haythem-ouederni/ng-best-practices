@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {environment} from '@connection-standalone/environments/environment';
 
 @Component({
   selector: 'app-root',
-  template: '<con-connection></con-connection>',
+  template: '{{title}} <br> <con-connection></con-connection>',
 })
 export class AppComponent {
+  title = environment.title;
 }

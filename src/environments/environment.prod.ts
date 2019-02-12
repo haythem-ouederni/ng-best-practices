@@ -1,3 +1,5 @@
+import {commonEnv} from '@general/environements/env.common';
+
 export const environment = {
-  production: true
+  ...commonEnv.prod,
 };

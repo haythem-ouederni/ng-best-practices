@@ -1,3 +1,7 @@
+import {commonEnv} from '@general/environements/env.common';
+import {connectionEnv} from '@general/environements/env.connection';
+
 export const environment = {
-  production: true
+  ...commonEnv.prod,
+  ...connectionEnv.prod,
 };

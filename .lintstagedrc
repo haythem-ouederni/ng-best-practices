@@ -1,3 +1,11 @@
 {
-  "*.ts": ["tslint --fix", "git add"]
+  "{src,e2e,general,projects}/**/*.ts": [
+    "tslint --fix",
+    "prettier --single-quote --no-bracket-spacing --write --trailing-comma es5 --print-width 140",
+    "git add"
+  ],
+  "{src,e2e,general,projects}/**/*.scss": [
+    "prettier --single-quote --write --print-width 140",
+    "git add"
+  ]
 }

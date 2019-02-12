@@ -19,12 +19,25 @@
       "dom"
     ],
     "paths": {
+      "@root/*": [
+        "src/*"
+      ],
+      "@general": [
+        "general"
+      ],
+      "@general/*": [
+        "general/*"
+      ],
       "@connection": [
         "projects/connection/src/public_api"
       ],
       "@connection/*": [
         "projects/connection/src/*"
-      ]
+      ],
+      "@connection-standalone/*": [
+        "projects/connection-standalone/src/*"
+      ],
+      
     }
   }
 }
