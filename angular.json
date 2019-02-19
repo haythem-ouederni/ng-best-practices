@@ -70,23 +70,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -140,14 +123,6 @@
           "options": {
             "tsConfig": "projects/connection/tsconfig.lib.json",
             "project": "projects/connection/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/connection/src/test.ts",
-            "tsConfig": "projects/connection/tsconfig.spec.json",
-            "karmaConfig": "projects/connection/karma.conf.js"
           }
         },
         "lint": {
@@ -240,7 +215,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/connection-standalone/tsconfig.app.json"
+              "projects/connection-standalone/tsconfig.app.json",
+              "projects/connection-standalone/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

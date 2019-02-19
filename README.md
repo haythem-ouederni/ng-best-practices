@@ -16,7 +16,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@TODO : using jest now
+
+[jest](https://jestjs.io/)
+[jest-preset-angular](https://github.com/thymikee/jest-preset-angular) : Used to make the jest configuration easier. The actual used version is 6.0.2, so documentation and the configuration will be different for the futur versions of this library.
+
+
+<!-- Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). -->
 
 ## Running end-to-end tests
 
@@ -123,3 +129,8 @@ If you want to skip the hools just add the `--no-verify` flag to your git comman
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+@TODOs
+
+Edit the tslint => use the one from synaps

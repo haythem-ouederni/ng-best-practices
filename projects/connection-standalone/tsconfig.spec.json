@@ -1,7 +1,7 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/spec",
+    "outDir": "../../out-tsc/spec",
     "module": "commonjs",
     "allowJs": true,
     "types": [
@@ -10,8 +10,8 @@
     ]
   },
   "files": [
-    "../general/confs/jest/setup/setupJest.ts",
-    "polyfills.ts"
+    "../../general/confs/jest/setup/setdupJest.ts",
+    "src/polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts",

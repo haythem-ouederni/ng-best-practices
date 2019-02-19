@@ -17,7 +17,9 @@ After building your library with `ng build connection`, go to the dist folder `c
 
 ## Running unit tests
 
-Run `ng test connection` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@TODO : using jest now
+
+<!-- Run `ng test connection` to execute the unit tests via [Karma](https://karma-runner.github.io). -->
 
 ## Further help
 

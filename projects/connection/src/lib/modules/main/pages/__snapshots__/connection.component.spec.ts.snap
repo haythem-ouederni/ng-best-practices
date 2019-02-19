@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectionComponent should match snapshot 1`] = `
+<con-connection
+  connectionService={[Function ConnectionService]}
+  display={[Function String]}
+>
+  <p>
+     connection works! testing man 
+  </p>
+</con-connection>
+`;

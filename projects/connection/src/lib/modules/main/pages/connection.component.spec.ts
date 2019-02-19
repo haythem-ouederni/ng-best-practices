@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ConnectionComponent } from '@connection';
+import {ConnectionComponent} from '@connection/lib/modules';
 
 describe('ConnectionComponent', () => {
   let component: ConnectionComponent;
@@ -8,9 +8,8 @@ describe('ConnectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionComponent ]
-    })
-    .compileComponents();
+      declarations: [ConnectionComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,9 @@ describe('ConnectionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should match snapshot', () => {
+    expect(fixture).toMatchSnapshot();
   });
 });
