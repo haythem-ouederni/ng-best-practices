@@ -1,6 +1,29 @@
 {
   "name": "angular-best-practices-example",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": {
+    "name": "Haythem OUEDERNI",
+    "email": "haythem.ouederni@gmail.com",
+    "url": "https://haythem-ouederni.github.io/"
+  },
+  "keywords": [
+    "angular",
+    "tutorial",
+    "boilerplate",
+    "best practices",
+    "ngxs",
+    "commitizen",
+    "commit",
+    "git hooks",
+    "jest",
+    "unit test",
+    "linting",
+    "typescript",
+    "library",
+    "store",
+    "production ready"
+  ],
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
