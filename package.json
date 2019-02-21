@@ -41,13 +41,15 @@
     "e2e": "ng e2e",
     "lintstaged": "lint-staged",
     "commit": "git-cz",
+    "commit:retry": "git-cz --retry",
     "prod": "yarn lint && yarn test:all && yarn build:prod",
     "ts-jest": "ts-jest"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lintstaged",
-      "pre-push": "yarn prod"
+      "pre-push": "yarn prod",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "config": {
@@ -76,6 +78,8 @@
     "@angular/cli": "~7.3.1",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.2",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",

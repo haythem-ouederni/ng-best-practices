@@ -106,7 +106,7 @@ In `package.json` you add :
 
 If you don't give any custom file in the configuration (`config.cz-customizable.config`), the `.cz-config.js` file present at the root of the project will be used.
 
-**Note:** To be able to use VS Code to edit git commit comments or other file manipulation tasks instead of default `vim` you can run `git config --global core.editor "code --wait"` at the condiction that VS Code is available from commande line (you can check it by running `code --help`).
+**Note:** To be able to use [VS Code](https://code.visualstudio.com/) to edit git commit comments or other file manipulation tasks instead of default `vim` you can run `git config --global core.editor "code --wait"` at the condiction that VS Code is available from commande line (you can check it by running `code --help`).
 
 More information [here](https://stackoverflow.com/questions/30024353/how-to-use-visual-studio-code-as-default-editor-for-git).
 
@@ -125,6 +125,43 @@ Add the `husky` configuration at the root of the `package.json` file :
 
 If you want to skip the hools just add the `--no-verify` flag to your git command. Example: `git push --no-verify`
 
+* [commitlint/cli](https://github.com/conventional-changelog/commitlint): As its name incdicates, this tool gives you the possibility to add an other check on the commit messages and if the meet the [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0-beta.3/) or the conventions you have defined yourself.
+
+So to the already defined `husky` hooks configuration, you can add the `commit-msg` hook :
+
+```` json
+"husky": {
+  "hooks": {
+    ...,
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  }
+}
+````
+
+`commit-msg` hook allows you to lint commits before they are created.
+
+You can add a `commitlint.config.js` file at the root of the project, to define linting rules/conventions.
+
+`commitlint.config.js` example:
+
+```` javascript
+module.exports = {
+  // we use the default @commitlint/config-conventional rules.
+  // you have to install @commitlint/config-conventional library to be able to use it.
+  extends: ['@commitlint/config-conventional'],
+  // Any rules defined here will override rules from @commitlint/config-conventional
+  // => custom rules
+  rules: {
+    'header-max-length': [2, 'always', 100],
+    'subject-case': [
+      2,
+      'never',
+      ['sentence-case', 'start-case', 'pascal-case', 'upper-case']
+    ],
+    ...
+  }
+};
+````
 
 ## Further help
 
@@ -134,3 +171,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 @TODOs
 
 Edit the tslint => use the one from synaps
+
+## License
+Copyright by @haythem-ouederni. All project sources are released under the MIT license.
