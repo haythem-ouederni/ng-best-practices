@@ -29,6 +29,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/connection/src/lib/modules"
+              ]
+            },
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -116,7 +121,7 @@
       "root": "projects/connection",
       "sourceRoot": "projects/connection/src",
       "projectType": "library",
-      "prefix": "con",
+      "prefix": "cnx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

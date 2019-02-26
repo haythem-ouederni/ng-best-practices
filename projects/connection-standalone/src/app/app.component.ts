@@ -3,8 +3,6 @@ import {environment} from '@connection-standalone/environments/environment';
 
 @Component({
   selector: 'app-root',
-  template: '{{title}} <br> <con-connection></con-connection>',
+  template: '<router-outlet></router-outlet>',
 })
-export class AppComponent {
-  title = environment.title;
-}
+export class AppComponent {}

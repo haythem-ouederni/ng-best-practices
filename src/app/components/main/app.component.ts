@@ -6,8 +6,4 @@ import {environment} from '@root/environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'angular-best-practices-example';
-
-  env = environment.production;
-}
+export class AppComponent {}

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageOneComponent should match snapshot 1`] = `
+<cnx-page-one
+  connectionPath=""
+  connectionService={[Function ConnectionService]}
+  display={[Function String]}
+  linkToPageTwo={[Function String]}
+>
+  <p>
+     Page One testing man
+  
+  </p><a
+    href="/page-two"
+    ng-reflect-router-link="//page-two"
+  >
+    Go to page two
+  </a>
+</cnx-page-one>
+`;

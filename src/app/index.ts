@@ -1,2 +1,3 @@
 export * from './components';
-export * from './modules';
+export * from './app-routing.module';
+export * from './app.module';

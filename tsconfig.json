@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
       "@root/*": [
         "src/*"
       ],
