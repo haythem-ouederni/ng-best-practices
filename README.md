@@ -1,6 +1,62 @@
-# AngularBestPracticesExample
+This project is aimed to be the support example of a [tutorial](https://github.com/haythem-ouederni/ng-best-practices/issues/1) walking you through best practices of front-end development (web/mobile) with a concrete example based on an [Angular](https://angular.io/) project.
+
+To see **tutorial** come as soon as possible you can [vote here](https://github.com/haythem-ouederni/ng-best-practices/issues/1).
+
+# Introduction
+
+This project is the result of my experience working on helping startups and more traditional industries (in finance and aerospatial) defining and developing their front-end projects (web and mobule).
+
+I have noticed, that every time, one of the most difficult parts when launching a product is defining the best practices and finding the best tools to put in place the development workflow.
+
+So I have decided to create this project, to be a concentrate of best practices ready to use out of the box and that may save developers and spetially tech-leads/technical-architects days and even months of hard work to find and define the best workflow for their projects.
+
+This project/tutorial main focus is development best practices. So, for the beginning, it won't include any material related to [Continuous Integration](https://fr.atlassian.com/continuous-delivery/continuous-integration) or application deployment.
+
+**Notice 1:** Many of the best practices present in this project are, as mentioned before, general to front-end development and even to development in general (not only front-end), so even if you are not using Angular in your project you can walk through it to get some interesting ideas.
+
+**Notice 2:** You can see the content of different project commits to have an idea of the evolution of the project and the steps to add/include a specific tool, library or pattern to the project.
+
+# AngularBestPracticesExample project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+
+For this project I mainly use [Yarn](https://yarnpkg.com). But you can run the same scripts/commands using [npm](https://www.npmjs.com/).
+
+For example to start the project using `yarn` you run `yarn start`. To do the same thing using `npm` you can run `npm run start`.
+
+## Before you start: Prerequisites
+
+To be able to launch this project you need to install:
+
+- [Node.js](https://nodejs.org) (mandatory)
+- [npm](https://www.npmjs.com/): it can be installed with NodeJs (mandatory)
+- [yarn](https://yarnpkg.com): if you want to use is instead of `npm` to run different scripts. (optional)
+- the IDE or Code editor of you choice. I can suggest you the use of [VS Code](https://code.visualstudio.com/) which is Free and very practical for front-end development and comes with many helpful plugins. You may also wan to use [WebStorm](https://www.jetbrains.com/webstorm/) which is **not free**. There is an other option which is [Atom](https://atom.io/). So it is up to you to choose which tool suits you most.
+
+Before being able to start the project, you have to install the different dependencies/librairies. To do so run:
+
+```` script
+# if npm
+npm install
+
+# if yarn
+yarn
+````
+
+## Optional tools
+
+Here is a list of optional tools you may need in general for your projects' development:
+
+- [git](https://git-scm.com/): for source control and be able to share code with other co-workers or just store your code and have access to the history of your project evolution
+- [SourceTree](https://www.sourcetreeapp.com/): a very user friendly and visual tool to handle your source control
+
+## Git Branches
+
+The main branch where you can find the latest working and tested code is the [master](https://github.com/haythem-ouederni/ng-best-practices).
+
+You can follow the day to day commits and development on the [develop](https://github.com/haythem-ouederni/ng-best-practices/tree/develop) branch.
+
+A tagging system will come along different upgrades and releases of the project.
 
 ## Development server
 
@@ -188,10 +244,5 @@ And here to make my module work while lazy loaded or direct loaded, a combinatio
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-
-@TODOs
-
-Edit the tslint => use the one from synaps
-
 ## License
-Copyright by @haythem-ouederni. All project sources are released under the MIT license.
+Copyright by @haythem-ouederni. All project sources are released under the [Apache License](https://github.com/haythem-ouederni/ng-best-practices/blob/master/LICENSE) license.
