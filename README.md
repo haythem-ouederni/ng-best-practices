@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -12,21 +12,28 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `yarn build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-@TODO : using jest now
+Actually, a default [angular-cli](https://cli.angular.io/) generated project uses [Karma](https://karma-runner.github.io/latest/index.html) tool for unit testing. The problem with Karma (it can be an advantage in some cases), is that it needs to launch a browser to run a test which in many cases is not necessary and at the same time extends the test execution time. In addition, you may have Continuous Integration integrated to you development/delivery process that runs on an environment where you can have a browser.
 
-[jest](https://jestjs.io/)
+There is an interesting alternative to `Karma` which is [Jest](https://jestjs.io/). It makes it faster and easier to write tests. No browser is needed. It comes with built-in mocking and assertion abilities. In addition, Jest runs your tests concurrently in parallel, providing a smoother, faster test run.
+
 [jest-preset-angular](https://github.com/thymikee/jest-preset-angular) : Used to make the jest configuration easier. The actual used version is 6.0.2, so documentation and the configuration will be different for the futur versions of this library.
 
 
-<!-- Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). -->
+Run `yarn test:all` to execute the unit tests via Jest on the whole project.
+
+If you want to run unit tests in a specific project like the `connection` project run `yarn test:connection`. Don't forget to add the needed script to your `package.json` file in addiion to the matching jest configuration file to be able to launch test on a new library. You can take the example of how it is done for the `connection` library.
+
+You can also launch you tests and watch for changes by running for exmaple `yarn test:all:watch`.
+
+**VS Code and Jest debug:** If you use [VS Code](https://code.visualstudio.com/), you can debug your Jest based unit tests by adding a `launch.json` file under your `.vscode` folder (you can find an example file in the actual repo). The debugger will use the built-in Node debugger. A more complete documentation can be fond [here](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests). 
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `yarn e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Imports
 
