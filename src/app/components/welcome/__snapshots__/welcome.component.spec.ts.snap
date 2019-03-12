@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomeComponent should match snapshot 1`] = `
+<app-welcome
+  env="false"
+  linkToPageOne={[Function String]}
+  title={[Function String]}
+>
+  <div
+    style="text-align:center"
+  >
+    <h1>
+      Production environment : false
+    </h1>
+    <h1>
+       Welcome to Angular Best Practices Example! 
+    </h1>
+  </div><a
+    href="/connection/page-one"
+    ng-reflect-router-link="/connection/page-one"
+  >
+    Go to page one
+  </a>
+</app-welcome>
+`;

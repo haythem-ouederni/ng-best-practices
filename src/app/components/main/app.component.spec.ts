@@ -19,21 +19,11 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the app', () => {
+  test('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should match snapshot', () => {
-  //   expect(fixture).toMatchSnapshot();
-  // });
-
-  // it(`should have as title 'angular-best-practices-example'`, () => {
-  //   expect(component.title).toEqual('angular-best-practices-example');
-  // });
-
-  // it('should render title in a h1 tag', () => {
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-best-practices-example!');
-  // });
+  test('should match snapshot', () => {
+    expect(fixture).toMatchSnapshot();
+  });
 });

@@ -16,7 +16,7 @@ This project/tutorial main focus is development best practices. So, for the begi
 
 **Notice 2:** You can see the content of different project commits to have an idea of the evolution of the project and the steps to add/include a specific tool, library or pattern to the project.
 
-# AngularBestPracticesExample project
+# Angular Best Practices Example project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
@@ -31,7 +31,7 @@ To be able to launch this project you need to install:
 - [Node.js](https://nodejs.org) (mandatory)
 - [npm](https://www.npmjs.com/): it can be installed with NodeJs (mandatory)
 - [yarn](https://yarnpkg.com): if you want to use is instead of `npm` to run different scripts. (optional)
-- the IDE or Code editor of you choice. I can suggest you the use of [VS Code](https://code.visualstudio.com/) which is Free and very practical for front-end development and comes with many helpful plugins. You may also wan to use [WebStorm](https://www.jetbrains.com/webstorm/) which is **not free**. There is an other option which is [Atom](https://atom.io/). So it is up to you to choose which tool suits you most.
+- the IDE or Code editor of you choice. I can suggest you the use of [VS Code](https://code.visualstudio.com/) which is Free and very practical for front-end development and comes with many helpful plugins. You may also want to use [WebStorm](https://www.jetbrains.com/webstorm/) which is **not free**. At the same time you have a free 30-day trial to test it. There is an other option which is [Atom](https://atom.io/). So it is up to you to choose which tool suits you most.
 
 Before being able to start the project, you have to install the different dependencies/librairies. To do so run:
 
@@ -232,17 +232,47 @@ module.exports = {
 
 The angular's [RouterModule](https://angular.io/api/router/RouterModule) was used. The [angular's documentation](https://angular.io/tutorial/toh-pt5) is very complete and I advise you to take a look at it.
 
-In this project, I have made the choice that for the `standalone` project(s), I use the direct routing/loading. In the other hand, for the main app (root app) the module are lazy loaded and it affects the way the routing works.
+In this project, I have made the choice that for the `app` (standalone) project(s), I use the direct routing/loading. In the other hand, for the main app (root app) the module are lazy loaded and it affects the way the routing works.
 
 To see how how, the lzay loading is dealt with you can take a look at the `src/app/lazy` directory where the lazy loaded modules are defined. Then these modules are "really" lazy loaded within the `src/app/app-routing.module.ts` file. For each lazy loaded module, a path is defined. This path must preceed all the paths defined in the original module.
 
-Exemple: Suppose that in your orignal module you access the `page-one` content via the url `localhost:4200/page-one` when you direct load it (like in the standalone project). At the same time, the path you have defined to lazy load the same module is `my-lazy-loaded-path`. So to access the same content/page, you should use the url `localhost:4200/my-lazy-loaded-path/page-one` instead.
+Exemple: Suppose that in your orignal module you access the `page-one` content via the url `localhost:4200/page-one` when you direct load it (like in the app/standalone project). At the same time, the path you have defined to lazy load the same module is `my-lazy-loaded-path`. So to access the same content/page, you should use the url `localhost:4200/my-lazy-loaded-path/page-one` instead.
 
 And here to make my module work while lazy loaded or direct loaded, a combination of `forRoot` method over the loaded module and environment variables is used.
+
+## Reactive forms
+
+When it comes to manipulating forms, in angular you have the choice between [Reactive forms](https://angular.io/guide/reactive-forms) and [Template-driven forms](https://angular.io/guide/forms).
+
+In the official [Angular documentation](https://angular.io/guide/forms-overview) you can find:
+- Reactive forms are more robust: they're more scalable, reusable, and testable. If forms are a key part of your application, or you're already using reactive patterns for building your application, use reactive forms.
+
+- Template-driven forms are useful for adding a simple form to an app, such as an email list signup form. They're easy to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, use template-driven forms.
+
+You can find a table of key differences [here](https://angular.io/guide/forms-overview#key-differences).
+
+For this project, I have chosen to use [Reactive forms](https://angular.io/guide/reactive-forms) for all the advantages it comes with like having a strcutered data model or taking advantage of synchronicity between your template (view/html) and you controller (component class/model). Besides, generally, in big projects you may have complex forms and the `reactive forms` makes the task build them easier for you.
+
+## Styling: Bootstrap
+ng-bootstrap
+
+## NGXS and Facade pattern
+
+Coming soon
 
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## VS Code plugins
+
+If you are using [VS Code](https://code.visualstudio.com/) you may find the following plugins very helpful:
+
+* [ts-barrelr](https://marketplace.visualstudio.com/items?itemName=mikerhyssmith.ts-barrelr): automates the production of index.ts barrel files.
+* [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner): Simple way to run or debug a single or multiple Jest-Tests from context menu. As it is possible in IntelliJ / Webstorm
+* [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin): Adds tslint to VS Code using the TypeScript TSLint language service plugin.
+* [TypeScript Importer](https://marketplace.visualstudio.com/items?itemName=pmneo.tsimporter): Automatically searches for TypeScript definitions in workspace files and provides all known symbols as completion item to allow code completion.
+
 
 ## License
 Copyright by @haythem-ouederni. All project sources are released under the [Apache License](https://github.com/haythem-ouederni/ng-best-practices/blob/master/LICENSE) license.

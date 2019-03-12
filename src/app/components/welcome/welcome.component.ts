@@ -1,6 +1,6 @@
+import {ROUTES_PATHS} from '@abpe/connection/lib/modules';
 import {Component} from '@angular/core';
-import {ROUTES_PATHS} from '@connection/lib/modules';
-import {environment} from '@root/environments/environment';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-welcome',

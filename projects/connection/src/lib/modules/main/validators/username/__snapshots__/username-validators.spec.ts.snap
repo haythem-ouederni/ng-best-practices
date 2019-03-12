@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsernameValidatorsMessages #contains should match snapshot when value inquired 1`] = `"my-value must contain my-content"`;
+
+exports[`UsernameValidatorsMessages #contains should match snapshot when value not inquired 1`] = `"Must contain my-content"`;

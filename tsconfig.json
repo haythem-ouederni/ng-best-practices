@@ -22,25 +22,37 @@
       "@angular/*": [
         "node_modules/@angular/*"
       ],
-      "@root/*": [
+      // abpe for angular-best-practices-example
+      "@abpe/root/*": [
         "src/*"
       ],
-      "@general": [
+      "@abpe/general": [
         "general"
       ],
-      "@general/*": [
+      "@abpe/general/*": [
         "general/*"
       ],
-      "@connection": [
+      "@abpe/connection": [
         "projects/connection/src/public_api"
       ],
-      "@connection/*": [
+      "@abpe/connection/*": [
         "projects/connection/src/*"
       ],
-      "@connection-standalone/*": [
-        "projects/connection-standalone/src/*"
+      "@abpe/connection-standalone-app/*": [
+        "projects/connection-standalone-app/src/*"
       ],
-      
+      "@abpe/shared": [
+        "projects/shared/src/public_api"
+      ],
+      "@abpe/shared/*": [
+        "projects/shared/src/*"
+      ],
+      "@abpe/core": [
+        "projects/core/src/public_api"
+      ],
+      "@abpe/core/*": [
+        "projects/core/src/*"
+      ]
     }
   }
 }

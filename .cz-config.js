@@ -17,9 +17,10 @@ module.exports = {
 
   scopes: [
     {name: 'transversal'},
-    {name: 'common'},
     {name: 'connection'},
-    {name: 'connection-standalone'},
+    {name: 'shared'},
+    {name: 'core'},
+    {name: 'connection-standalone-app'},
     {name: 'app'}
   ],
 

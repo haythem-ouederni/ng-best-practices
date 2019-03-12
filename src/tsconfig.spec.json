@@ -10,7 +10,7 @@
     ]
   },
   "files": [
-    "../general/confs/jest/setup/setupJest.ts",
+    "../general/config/jest/setup/setupJest.ts",
     "polyfills.ts"
   ],
   "include": [

@@ -4,9 +4,9 @@ import {Injectable} from '@angular/core';
   providedIn: 'root',
 })
 export class ConnectionService {
-  constructor() {}
+  calculated = 'testing';
 
-  calcultate(): string {
-    return 'testing man';
+  calculate(): string {
+    return this.calculated;
   }
 }

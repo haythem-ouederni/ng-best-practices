@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonValidationMessages #validationMessages should match snapshot 1`] = `
+Object {
+  "invalid": Object {
+    "pattern": "Invalid input",
+  },
+  "length": Object {
+    "maxlength": Object {
+      "maxlength": [Function],
+    },
+    "minlength": Object {
+      "minlength": [Function],
+    },
+  },
+  "numbers": Object {
+    "decimal": Object {
+      "pattern": Object {
+        "pattern": "Should be a number",
+      },
+    },
+    "integer": Object {
+      "pattern": Object {
+        "pattern": "Should be an integer",
+      },
+    },
+    "max": Object {
+      "max": [Function],
+    },
+    "min": Object {
+      "min": [Function],
+    },
+  },
+  "required": Object {
+    "required": "Required input",
+  },
+}
+`;
+
+exports[`CommonValidationMessages should match snapshot 1`] = `CommonValidationMessagesService {}`;

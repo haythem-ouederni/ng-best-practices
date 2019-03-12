@@ -1,20 +1,156 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PageOneComponent #buildValidationErrors should build validationErrorMessages 1`] = `
+Object {
+  "age": Object {
+    "max": [Function],
+    "min": [Function],
+    "pattern": "Should be an integer",
+    "required": "Required input",
+  },
+  "password": Object {
+    "beginsWith": [Function],
+    "minlength": "The minimal length is 8",
+    "required": "Required input",
+  },
+  "username": Object {
+    "contains": "Must contain ngx",
+    "pattern": "Invalid input",
+    "required": "Required input",
+  },
+}
+`;
+
+exports[`PageOneComponent component initialization should have the right link to page two 1`] = `"/base-path/page-two"`;
+
 exports[`PageOneComponent should match snapshot 1`] = `
 <cnx-page-one
-  connectionPath=""
+  age={[Function FormControl]}
+  ageSubject={[Function Subject]}
+  buildValidationErrors={[Function Function]}
+  commonValidationMessages={[Function CommonValidationMessagesService]}
+  connectionPath={[Function String]}
   connectionService={[Function ConnectionService]}
   display={[Function String]}
+  form={[Function FormGroup]}
+  formBuilder={[Function FormBuilder]}
+  formErrors={[Function Object]}
+  informationToDisplay={[Function Object]}
+  initAgeSubject={[Function Function]}
+  initErrorsListener={[Function Function]}
+  initForm={[Function Function]}
+  initFormControls={[Function Function]}
+  initPasswordSubject={[Function Function]}
+  initSubjects={[Function Function]}
+  initUsernameSubject={[Function Function]}
+  isFormSubmittedSuccessfully="false"
   linkToPageTwo={[Function String]}
+  ngOnInit={[Function Function]}
+  password={[Function FormControl]}
+  passwordSubject={[Function Subject]}
+  pwdSuffix={[Function String]}
+  subscriptions={[Function Subscription]}
+  username={[Function FormControl]}
+  usernameContent={[Function String]}
+  usernameSubject={[Function Subject]}
+  validationErrorMessages={[Function Object]}
 >
-  <p>
-     Page One testing man
-  
-  </p><a
-    href="/page-two"
-    ng-reflect-router-link="//page-two"
+  <div
+    class="alert alert-primary"
+    role="alert"
   >
-    Go to page two
-  </a>
+     Page One testing
+  
+  </div><form
+    class="ng-untouched ng-pristine ng-invalid"
+    ng-reflect-form="[object Object]"
+    novalidate=""
+  >
+    <div
+      class="input-group mb-3"
+    >
+      <div
+        class="input-group-prepend"
+      >
+        <span
+          class="input-group-text"
+          id="basic-addon1"
+        >
+          @
+        </span>
+      </div>
+      <input
+        aria-describedby="basic-addon1"
+        aria-label="Username"
+        class="form-control ng-untouched ng-pristine ng-invalid"
+        formcontrolname="username"
+        id="username"
+        ng-reflect-name="username"
+        placeholder="Username"
+        type="text"
+      />
+    </div>
+    
+    <div
+      class="input-group mb-3"
+    >
+      <input
+        aria-describedby="basic-addon1"
+        aria-label="Password"
+        class="form-control ng-untouched ng-pristine ng-invalid"
+        formcontrolname="password"
+        id="password"
+        ng-reflect-name="password"
+        placeholder="Password"
+        type="password"
+      />
+    </div>
+    
+    <div
+      class="input-group mb-3"
+    >
+      <input
+        aria-describedby="basic-addon1"
+        aria-label="Age"
+        class="form-control ng-untouched ng-pristine ng-invalid"
+        formcontrolname="age"
+        id="age"
+        ng-reflect-name="age"
+        placeholder="Age"
+        type="text"
+      />
+    </div>
+    
+    <button
+      class="btn btn-primary"
+      id="submit"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form><p>
+    Just to make sure cnx-styles is working
+  </p><div
+    class="form-summary"
+  >
+    <p>
+      Inquired information :
+    </p>
+    <p>
+      {
+    "username": null,
+    "password": null,
+    "age": null
+  }
+    </p>
+  </div><div>
+    <a
+      class="btn btn-success"
+      href="/base-path/page-two"
+      ng-reflect-router-link="/base-path/page-two"
+    >
+      Go to page two
+    </a>
+  </div>
 </cnx-page-one>
 `;

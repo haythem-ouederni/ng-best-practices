@@ -1,5 +1,100 @@
-<p>
+<div class="alert alert-primary" role="alert">
   Page One {{display}}
-</p>
+</div>
 
-<a routerLink="{{linkToPageTwo}}">Go to page two</a>
+<!-- Block to display when the form is successfully submitted -->
+<div *ngIf="isFormSubmittedSuccessfully" class="alert alert-success">
+  Congrats! Form successfully submitted
+</div>
+
+<form 
+  [formGroup]="form"
+  #connectionForm="ngForm"
+  (ngSubmit)="onSubmit()">
+
+  <!-- username container-->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span 
+        class="input-group-text"
+        id="basic-addon1">@</span>
+    </div>
+    <input 
+      type="text" 
+      id="username"
+      formControlName="username" 
+      (input)="onChangeUsername()"
+      class="form-control" 
+      placeholder="Username" 
+      aria-label="Username" 
+      aria-describedby="basic-addon1">
+  </div>
+  <!-- username related errors -->
+  <div 
+    class="alert alert-danger"
+    role="alert" 
+    *ngIf="validationErrorMessages && username.invalid && (username.touched || connectionForm.submitted)">
+    <span *ngFor="let error of (username.errors | keysAndValuesFromObject | slice:0:1)">
+      {{validationErrorMessages['username'][error.key]}}
+    </span>
+  </div>
+
+  <!-- password container-->
+  <div class="input-group mb-3">
+    <input 
+      type="password" 
+      id="password"
+      formControlName="password" 
+      (input)="onChangePassword()"
+      class="form-control" 
+      placeholder="Password" 
+      aria-label="Password" 
+      aria-describedby="basic-addon1"
+      >
+  </div>
+  <!-- password related errors -->
+  <div
+    *ngIf="formErrors?.password && (password.touched || connectionForm.submitted)"
+    class="alert alert-danger" 
+    role="alert">
+    <span>
+      {{formErrors?.password}}
+    </span>
+  </div>
+
+  <!-- age container-->
+  <div class="input-group mb-3">
+    <input 
+      type="text" 
+      id="age"
+      formControlName="age" 
+      (input)="onChangeAge()"
+      class="form-control" 
+      placeholder="Age" 
+      aria-label="Age" 
+      aria-describedby="basic-addon1">
+  </div>
+  <!-- Age related errors -->
+  <div
+    *ngIf="formErrors?.age && (age.touched || connectionForm.submitted)"
+    class="alert alert-danger" 
+    role="alert">
+    <span>
+      {{formErrors?.age}}
+    </span>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+</form>
+
+<p>Just to make sure cnx-styles is working</p>
+
+<!-- Information to display container -->
+<div class="form-summary">
+  <p>Inquired information :</p>
+  <p>{{informationToDisplay | json}}</p>
+</div>
+
+<div>
+  <a routerLink="{{linkToPageTwo}}" class="btn btn-success">Go to page two</a>
+</div>

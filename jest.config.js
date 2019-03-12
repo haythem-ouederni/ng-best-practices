@@ -45,7 +45,7 @@ module.exports = {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     'node_modules/',
-    'general/confs/jest/setup/setupJest.ts',
+    'general/config/jest/setup/setupJest.ts',
     'index.ts',
   ],
   // The directory where Jest should output its coverage files
@@ -61,14 +61,19 @@ module.exports = {
   testURL: 'http://localhost/',
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^@assets/(.*)': '<rootDir>/src/assets/$1',
-    '^@connection/(.*)': '<rootDir>/projects/connection/src/$1',
-    '^@root/(.*)': '<rootDir>/src/$1',
-    '^@general/(.*)': '<rootDir>/general/$1',
+    '^@abpe/assets/(.*)': '<rootDir>/src/assets/$1',
+    '^@abpe/connection/(.*)': '<rootDir>/projects/connection/src/$1',
+    '^@abpe/connection': '<rootDir>/projects/connection/src/public_api',
+    '^@abpe/shared/(.*)': '<rootDir>/projects/shared/src/$1',
+    '^@abpe/shared': '<rootDir>/projects/shared/src/public_api',
+    '^@abpe/core/(.*)': '<rootDir>/projects/core/src/$1',
+    '^@abpe/core': '<rootDir>/projects/core/src/public_api',
+    '^@abpe/root/(.*)': '<rootDir>/src/$1',
+    '^@abpe/general/(.*)': '<rootDir>/general/$1',
   },
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/general/confs/jest/setup/setupJest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/general/config/jest/setup/setupJest.ts'],
 
   // The test environment that will be used for testing
   // testEnvironment: 'node',

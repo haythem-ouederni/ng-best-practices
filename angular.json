@@ -31,6 +31,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "node_modules/bootstrap/scss",
                 "projects/connection/src/lib/modules"
               ]
             },
@@ -122,6 +123,11 @@
       "sourceRoot": "projects/connection/src",
       "projectType": "library",
       "prefix": "cnx",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -144,9 +150,9 @@
         }
       }
     },
-    "connection-standalone": {
-      "root": "projects/connection-standalone",
-      "sourceRoot": "projects/connection-standalone/src",
+    "connection-standalone-app": {
+      "root": "projects/connection-standalone-app",
+      "sourceRoot": "projects/connection-standalone-app/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -158,20 +164,21 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/common-standalone",
-            "index": "projects/connection-standalone/src/index.html",
-            "main": "projects/connection-standalone/src/main.ts",
-            "polyfills": "projects/connection-standalone/src/polyfills.ts",
-            "tsConfig": "projects/connection-standalone/tsconfig.app.json",
+            "outputPath": "dist/common-app",
+            "index": "projects/connection-standalone-app/src/index.html",
+            "main": "projects/connection-standalone-app/src/main.ts",
+            "polyfills": "projects/connection-standalone-app/src/polyfills.ts",
+            "tsConfig": "projects/connection-standalone-app/tsconfig.app.json",
             "assets": [
-              "projects/connection-standalone/src/favicon.ico",
-              "projects/connection-standalone/src/assets"
+              "projects/connection-standalone-app/src/favicon.ico",
+              "projects/connection-standalone-app/src/assets"
             ],
             "styles": [
-              "projects/connection-standalone/src/styles.scss"
+              "projects/connection-standalone-app/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "node_modules/bootstrap/scss",
                 "projects/connection/src/lib/modules"
               ]
             },
@@ -182,8 +189,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/connection-standalone/src/environments/environment.ts",
-                  "with": "projects/connection-standalone/src/environments/environment.prod.ts"
+                  "replace": "projects/connection-standalone-app/src/environments/environment.ts",
+                  "with": "projects/connection-standalone-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -208,11 +215,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "connection-standalone:build"
+            "browserTarget": "connection-standalone-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "connection-standalone:build:production"
+              "browserTarget": "connection-standalone-app:build:production"
             }
           }
         },
@@ -220,8 +227,67 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/connection-standalone/tsconfig.app.json",
-              "projects/connection-standalone/tsconfig.spec.json"
+              "projects/connection-standalone-app/tsconfig.app.json",
+              "projects/connection-standalone-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "shared": {
+      "root": "projects/shared",
+      "sourceRoot": "projects/shared/src",
+      "projectType": "library",
+      "prefix": "shared",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/shared/tsconfig.lib.json",
+            "project": "projects/shared/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/shared/tsconfig.lib.json",
+              "projects/shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "core": {
+      "root": "projects/core",
+      "sourceRoot": "projects/core/src",
+      "projectType": "library",
+      "prefix": "core",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/core/tsconfig.lib.json",
+            "project": "projects/core/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/core/tsconfig.lib.json",
+              "projects/core/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {environment} from '@root/environments/environment';
+import {environment} from '../environments/environment';
 import {WelcomeComponent} from './components';
 
 const routes: Routes = [
   {
     path: environment.connection.basePath,
-    loadChildren: './lazy/lazy-connection.module#LazyConnectionModule',
+    loadChildren: './lazy-modules/lazy-connection.module#LazyConnectionModule',
   },
   {
     path: '',

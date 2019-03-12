@@ -1,4 +1,4 @@
-import {PathEnv} from '@general/environments/models';
+import {PathEnv} from './models';
 
 export interface ConnectionLibEnv extends PathEnv {
   connection: {
@@ -8,13 +8,13 @@ export interface ConnectionLibEnv extends PathEnv {
 export const dev: ConnectionLibEnv = {
   basePath: 'connection',
   connection: {
-    api: null,
+    api: 'path-to-api/in/dev',
   },
 };
 
 export const prod: ConnectionLibEnv = {
   basePath: 'connection',
   connection: {
-    api: null,
+    api: 'path-to-api/in/prod',
   },
 };

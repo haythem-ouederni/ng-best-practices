@@ -19,7 +19,11 @@ describe('WelcomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  test('should match snapshot', () => {
+    expect(fixture).toMatchSnapshot();
   });
 });
