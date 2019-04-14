@@ -1,7 +1,24 @@
 <div class="alert alert-success" role="alert">
-  Second page works!
+  User Information Recap
 </div>
 
 <div>
-  <a routerLink="{{linkToPageOne}}" class="btn btn-success">Go to page one</a>
+  Direct username value : <span class="badge badge-primary">{{username$ | async}}</span>
+</div>
+
+<div>
+  Direct password value : <span class="badge badge-secondary">{{password$ | async}}</span>
+</div>
+
+<div>
+  Direct age value : <span class="badge badge-success">{{age$ | async}}</span>
+</div>
+
+<div>
+  <p>All the user information from the state at once :</p>
+  <p><span class="badge badge-info">{{userInformation$ | async | json}}</span></p>
+</div>
+
+<div>
+  <button (click)="goToPageOne()" class="btn btn-success" type="button">Go to page one</button>
 </div>

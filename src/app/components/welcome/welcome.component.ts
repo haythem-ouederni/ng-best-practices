@@ -1,6 +1,8 @@
 import {ROUTES_PATHS} from '@abpe/connection/lib/modules';
 import {Component} from '@angular/core';
 import {environment} from '../../../environments/environment';
+import {Navigate} from '@ngxs/router-plugin';
+import {Store} from '@ngxs/store';
 
 @Component({
   selector: 'app-welcome',
@@ -8,9 +10,16 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent {
-  linkToPageOne = `/${environment.connection.basePath}/${ROUTES_PATHS.pageOne}`;
-
   title = 'Angular Best Practices Example';
 
   env = environment.production;
+
+  constructor(private store: Store) {}
+
+  ////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////// Navigayion ///////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  goToPageOne() {
+    this.store.dispatch(new Navigate([environment.connection.basePath, ROUTES_PATHS.pageOne]));
+  }
 }

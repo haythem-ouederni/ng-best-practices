@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ROUTES_PATHS} from '../../connection.constant';
 import {CONNECTION_PATH} from '../../services/token';
+import {Observable} from 'rxjs';
+import {ConnectionStateModel, ConnectionFacade} from '../../state';
 
 @Component({
   selector: 'cnx-page-two',
@@ -8,9 +10,24 @@ import {CONNECTION_PATH} from '../../services/token';
   styleUrls: ['./page-two.component.scss'],
 })
 export class PageTwoComponent implements OnInit {
-  linkToPageOne = `/${this.connectionPath}/${ROUTES_PATHS.pageOne}`;
+  username$: Observable<string>;
+  password$: Observable<string>;
+  age$: Observable<number>;
+  userInformation$: Observable<ConnectionStateModel>;
 
-  constructor(@Inject(CONNECTION_PATH) private connectionPath: string) {}
+  constructor(private facade: ConnectionFacade) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.username$ = this.facade.username$;
+    this.password$ = this.facade.password$;
+    this.age$ = this.facade.age$;
+    this.userInformation$ = this.facade.userInformation$;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////// Navigation ///////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  goToPageOne() {
+    this.facade.goToPageOne();
+  }
 }

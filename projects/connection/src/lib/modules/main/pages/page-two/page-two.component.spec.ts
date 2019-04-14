@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
+import {Store} from '@ngxs/store';
 import {CONNECTION_PATH} from '../../services/token';
+import {ConnectionFacade} from '../../state';
 import {PageTwoComponent} from './page-two.component';
 
 describe('PageTwoComponent', () => {
@@ -8,6 +10,10 @@ describe('PageTwoComponent', () => {
   let fixture: ComponentFixture<PageTwoComponent>;
 
   beforeEach(async(() => {
+    const storeMock = jest.fn();
+
+    const facadeMock = jest.fn();
+
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [PageTwoComponent],
@@ -15,6 +21,14 @@ describe('PageTwoComponent', () => {
         {
           provide: CONNECTION_PATH,
           useValue: '',
+        },
+        {
+          provide: Store,
+          useValue: storeMock,
+        },
+        {
+          provide: ConnectionFacade,
+          useValue: facadeMock,
         },
       ],
     }).compileComponents();

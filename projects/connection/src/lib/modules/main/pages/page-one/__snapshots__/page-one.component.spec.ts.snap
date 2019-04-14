@@ -21,21 +21,18 @@ Object {
 }
 `;
 
-exports[`PageOneComponent component initialization should have the right link to page two 1`] = `"/base-path/page-two"`;
-
 exports[`PageOneComponent should match snapshot 1`] = `
 <cnx-page-one
   age={[Function FormControl]}
   ageSubject={[Function Subject]}
   buildValidationErrors={[Function Function]}
   commonValidationMessages={[Function CommonValidationMessagesService]}
-  connectionPath={[Function String]}
   connectionService={[Function ConnectionService]}
   display={[Function String]}
+  facade={[Function Function]}
   form={[Function FormGroup]}
   formBuilder={[Function FormBuilder]}
   formErrors={[Function Object]}
-  informationToDisplay={[Function Object]}
   initAgeSubject={[Function Function]}
   initErrorsListener={[Function Function]}
   initForm={[Function Function]}
@@ -44,7 +41,6 @@ exports[`PageOneComponent should match snapshot 1`] = `
   initSubjects={[Function Function]}
   initUsernameSubject={[Function Function]}
   isFormSubmittedSuccessfully="false"
-  linkToPageTwo={[Function String]}
   ngOnInit={[Function Function]}
   password={[Function FormControl]}
   passwordSubject={[Function Subject]}
@@ -130,27 +126,13 @@ exports[`PageOneComponent should match snapshot 1`] = `
     </button>
   </form><p>
     Just to make sure cnx-styles is working
-  </p><div
-    class="form-summary"
-  >
-    <p>
-      Inquired information :
-    </p>
-    <p>
-      {
-    "username": null,
-    "password": null,
-    "age": null
-  }
-    </p>
-  </div><div>
-    <a
+  </p><div>
+    <button
       class="btn btn-success"
-      href="/base-path/page-two"
-      ng-reflect-router-link="/base-path/page-two"
+      type="button"
     >
-      Go to page two
-    </a>
+      Go to page two (with information from store)
+    </button>
   </div>
 </cnx-page-one>
 `;

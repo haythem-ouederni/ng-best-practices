@@ -3,10 +3,12 @@ import {SharedModule} from '@abpe/shared';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
+import {Store} from '@ngxs/store';
 import {ComponentTester, speculoosMatchers, TestButton, TestInput} from 'ngx-speculoos';
-import {of, Subscription, Subject} from 'rxjs';
+import {of, Subject, Subscription} from 'rxjs';
 import {ConnectionService} from '../../services';
 import {CONNECTION_PATH} from '../../services/token';
+import {ConnectionFacade} from '../../state';
 import {PageOneComponent} from './page-one.component';
 
 class PageOneComponentTester extends ComponentTester<PageOneComponent> {
@@ -56,6 +58,10 @@ describe('PageOneComponent', () => {
   let initUsernameSubjectSpy: jest.SpyInstance;
 
   beforeEach(async(() => {
+    const storeMock = jest.fn();
+
+    const facadeMock = jest.fn();
+
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, ReactiveFormsModule, SharedModule],
       declarations: [PageOneComponent],
@@ -63,6 +69,14 @@ describe('PageOneComponent', () => {
         {
           provide: CONNECTION_PATH,
           useValue: 'base-path',
+        },
+        {
+          provide: Store,
+          useValue: storeMock,
+        },
+        {
+          provide: ConnectionFacade,
+          useValue: facadeMock,
         },
       ],
     }).compileComponents();
@@ -100,10 +114,6 @@ describe('PageOneComponent', () => {
   });
 
   describe('component initialization', () => {
-    test('should have the right link to page two', () => {
-      expect(component.linkToPageTwo).toMatchSnapshot();
-    });
-
     test('should call the intialization methods', () => {
       expect(ngOnInitSpy).toHaveBeenCalledTimes(1);
       expect(calculateSpy).toHaveBeenCalledTimes(1);
@@ -193,12 +203,8 @@ describe('PageOneComponent', () => {
 
   describe('#onSubmit', () => {
     test('should set isFormSubmittedSuccessfully to false if the form is not valid', () => {
-      // component.form.patchValue({
-      //   username: null,
-      // });
       component.onSubmit();
       expect(component.isFormSubmittedSuccessfully).toEqual(false);
-      // TODO
     });
 
     test('should set isFormSubmittedSuccessfully to true if the form is valid', () => {

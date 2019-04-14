@@ -3,7 +3,7 @@
 exports[`WelcomeComponent should match snapshot 1`] = `
 <app-welcome
   env="false"
-  linkToPageOne={[Function String]}
+  store={[Function Function]}
   title={[Function String]}
 >
   <div
@@ -15,11 +15,11 @@ exports[`WelcomeComponent should match snapshot 1`] = `
     <h1>
        Welcome to Angular Best Practices Example! 
     </h1>
-  </div><a
-    href="/connection/page-one"
-    ng-reflect-router-link="/connection/page-one"
+  </div><button
+    class="btn btn-primary"
+    type="button"
   >
     Go to page one
-  </a>
+  </button>
 </app-welcome>
 `;

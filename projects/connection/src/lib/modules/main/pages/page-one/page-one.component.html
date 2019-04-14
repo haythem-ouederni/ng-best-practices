@@ -29,7 +29,7 @@
       aria-label="Username" 
       aria-describedby="basic-addon1">
   </div>
-  <!-- username related errors -->
+  <!-- username related errors: using direct validation -->
   <div 
     class="alert alert-danger"
     role="alert" 
@@ -52,7 +52,7 @@
       aria-describedby="basic-addon1"
       >
   </div>
-  <!-- password related errors -->
+  <!-- password related errors: using formErrors -->
   <div
     *ngIf="formErrors?.password && (password.touched || connectionForm.submitted)"
     class="alert alert-danger" 
@@ -74,7 +74,7 @@
       aria-label="Age" 
       aria-describedby="basic-addon1">
   </div>
-  <!-- Age related errors -->
+  <!-- Age related errors: using formErrors -->
   <div
     *ngIf="formErrors?.age && (age.touched || connectionForm.submitted)"
     class="alert alert-danger" 
@@ -89,12 +89,6 @@
 
 <p>Just to make sure cnx-styles is working</p>
 
-<!-- Information to display container -->
-<div class="form-summary">
-  <p>Inquired information :</p>
-  <p>{{informationToDisplay | json}}</p>
-</div>
-
 <div>
-  <a routerLink="{{linkToPageTwo}}" class="btn btn-success">Go to page two</a>
+  <button (click)="goToPageTwo()" class="btn btn-success" type="button">Go to page two (with information from store)</button>
 </div>

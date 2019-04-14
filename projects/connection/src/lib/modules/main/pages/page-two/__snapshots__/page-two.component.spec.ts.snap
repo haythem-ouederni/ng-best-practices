@@ -2,23 +2,57 @@
 
 exports[`PageTwoComponent should match snapshot 1`] = `
 <cnx-page-two
-  connectionPath=""
-  linkToPageOne={[Function String]}
+  age$="undefined"
+  facade={[Function Function]}
+  password$="undefined"
+  userInformation$="undefined"
+  username$="undefined"
 >
   <div
     class="alert alert-success"
     role="alert"
   >
-     Second page works!
+     User Information Recap
   
   </div><div>
-    <a
+     Direct username value : 
+    <span
+      class="badge badge-primary"
+    >
+      
+    </span>
+  </div><div>
+     Direct password value : 
+    <span
+      class="badge badge-secondary"
+    >
+      
+    </span>
+  </div><div>
+     Direct age value : 
+    <span
+      class="badge badge-success"
+    >
+      
+    </span>
+  </div><div>
+    <p>
+      All the user information from the state at once :
+    </p>
+    <p>
+      <span
+        class="badge badge-info"
+      >
+        null
+      </span>
+    </p>
+  </div><div>
+    <button
       class="btn btn-success"
-      href="/page-one"
-      ng-reflect-router-link="//page-one"
+      type="button"
     >
       Go to page one
-    </a>
+    </button>
   </div>
 </cnx-page-two>
 `;

@@ -258,7 +258,39 @@ ng-bootstrap
 
 ## NGXS and Facade pattern
 
-Coming soon
+### NGXS
+
+Most libraries like React, Angular, etc. are built with a way for components to internally manage their state without any need for an external library or tool. It does well for applications with few components but as the application grows bigger, managing states shared across components becomes a chore.
+
+In an app where data is shared among components, it might be confusing to actually know where a state should live. Ideally, the data in a component should live in just one component. So sharing data among sibling components becomes difficult ([source](https://blog.logrocket.com/why-use-redux-reasons-with-clear-examples-d21bffd5835)).
+
+The way a state management library works is simple. There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another.
+
+For example, for [React](https://reactjs.org/) one of the most used state management libraries is [Redux](https://redux.js.org/). And the use of the [react-redux](https://github.com/reduxjs/react-redux) package makes it easier. For sure, you have other state management librairies for `react` like [facebook's flux](https://github.com/facebook/flux). So choose what suits you most knwoing that `redux` is more used that `flux` because it is not centred on `react` and can be used with any other view library.
+
+For `angular` you have many options for state management like:
+* [NGXS](https://github.com/ngxs/store): NGXS is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
+* [NGRX](https://ngrx.io/): Store is RxJS powered state management for Angular applications, inspired by Redux. Store is a controlled state container designed to help write performant, consistent applications on top of Angular.
+* [datorama/akita](https://github.com/datorama/akita): Akita is a state management pattern, built on top of RxJS, which takes the idea of multiple data stores from Flux and the immutable updates from Redux, along with the concept of streaming data, to create the Observable Data Store model.
+
+For `Angular`, after studying the different options, I find that `ngxs` is the best option. It is written for `Angular` at the first place so it is implemented following the Angular's code style and takes andvantage of the `Dependency Injection` provided by `Angular`. In addition, it is less verbose then other libraries. For these reasons we have made the choice to use it in many companies I worked with. **[You can find here](https://medium.com/@amcdnl/why-another-state-management-framework-for-angular-b4b4c19ef664)** of a complete explanation of why to use `ngxs`.
+
+Used `ngxs` plugins for this repo: 
+* [Logger](https://ngxs.gitbook.io/ngxs/plugins/logger): A simple console log plugin to log actions as they are processed.
+* [Devtools](https://ngxs.gitbook.io/ngxs/plugins/devtools): Plugin with integration with the [Redux Devtools extension](http://extension.remotedev.io/).
+* [Router](https://ngxs.gitbook.io/ngxs/plugins/router): To help you handle navigation.
+  
+### Facade pattern
+
+The facade pattern is a [software-design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) commonly used in [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming). Analogous to a [facade](https://en.wikipedia.org/wiki/Facade) in architecture, a facade is an object that serves as a front-facing interface masking more complex underlying or structural code. A facade can:
+
+* improve the readability and usability of a software library by masking interaction with more complex components behind a single (and often simplified) API;
+* provide a context-specific interface to more generic functionality (complete with context-specific input validation);
+* serve as a launching point for a broader refactor of monolithic or tightly-coupled systems in favor of more loosely-coupled code.
+
+While this seems like a rather trivial change (and an extra layer), the Facade has a huge positive impact of developer productivity and yields significantly less complexity in the view layers ([source](https://medium.com/ngxs/ngxs-facade-3aa90c41497b)).
+
+An other advantage is that it makes your controllers (Angular components for example), independant from the state management library you have chosen to use.
 
 ## Further help
 

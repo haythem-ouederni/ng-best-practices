@@ -12,8 +12,8 @@ import {
   ROUTES_PATHS,
   USERNAME_PATTERN,
 } from '../../connection.constant';
-import {PageOneInformation} from '../../models';
 import {ConnectionService, CONNECTION_PATH} from '../../services';
+import {ConnectionFacade} from '../../state';
 import {PasswordValidators, PasswordValidatorsMessages, UsernameValidatorsMessages} from '../../validators';
 import {UsernameValidators} from '../../validators/username/username-validators';
 
@@ -23,8 +23,6 @@ import {UsernameValidators} from '../../validators/username/username-validators'
   styleUrls: ['./page-one.component.scss'],
 })
 export class PageOneComponent implements OnInit, OnDestroy {
-  linkToPageTwo = `/${this.connectionPath}/${ROUTES_PATHS.pageTwo}`;
-
   display: string;
 
   // Form information
@@ -41,13 +39,6 @@ export class PageOneComponent implements OnInit, OnDestroy {
   private usernameSubject = new Subject<string>();
   private passwordSubject = new Subject<string>();
   private ageSubject = new Subject<number>();
-
-  // information to display
-  informationToDisplay: PageOneInformation = {
-    username: null,
-    password: null,
-    age: null,
-  };
 
   // boolean to indicate whether the form was sumitted sucessfully
   isFormSubmittedSuccessfully = false;
@@ -72,8 +63,8 @@ export class PageOneComponent implements OnInit, OnDestroy {
   constructor(
     private connectionService: ConnectionService,
     private formBuilder: FormBuilder,
-    @Inject(CONNECTION_PATH) private connectionPath: string,
-    private commonValidationMessages: CommonValidationMessagesService
+    private commonValidationMessages: CommonValidationMessagesService,
+    private facade: ConnectionFacade
   ) {}
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -247,30 +238,24 @@ export class PageOneComponent implements OnInit, OnDestroy {
 
   initAgeSubject(): void {
     const subscription = this.commonInitSubject(this.ageSubject).subscribe((age: number) => {
-      this.informationToDisplay = {
-        ...this.informationToDisplay,
-        age,
-      };
+      // update the state
+      this.facade.updateAge(age);
     });
 
     this.subscriptions.add(subscription);
   }
   initPasswordSubject(): void {
     const subscription = this.commonInitSubject(this.passwordSubject).subscribe((password: string) => {
-      this.informationToDisplay = {
-        ...this.informationToDisplay,
-        password,
-      };
+      // update the state
+      this.facade.updatePassword(password);
     });
 
     this.subscriptions.add(subscription);
   }
   initUsernameSubject(): void {
     const subscription = this.commonInitSubject(this.usernameSubject).subscribe((username: string) => {
-      this.informationToDisplay = {
-        ...this.informationToDisplay,
-        username,
-      };
+      // update the state
+      this.facade.updateUsername(username);
     });
 
     this.subscriptions.add(subscription);
@@ -285,5 +270,12 @@ export class PageOneComponent implements OnInit, OnDestroy {
     } else {
       this.isFormSubmittedSuccessfully = false;
     }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////// Navigation ///////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  goToPageTwo() {
+    this.facade.goToPageTwo();
   }
 }
