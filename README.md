@@ -33,7 +33,7 @@ To be able to launch this project you need to install:
 - [yarn](https://yarnpkg.com): if you want to use is instead of `npm` to run different scripts. (optional)
 - the IDE or Code editor of you choice. I can suggest you the use of [VS Code](https://code.visualstudio.com/) which is Free and very practical for front-end development and comes with many helpful plugins. You may also want to use [WebStorm](https://www.jetbrains.com/webstorm/) which is **not free**. At the same time you have a free 30-day trial to test it. There is an other option which is [Atom](https://atom.io/). So it is up to you to choose which tool suits you most.
 
-Before being able to start the project, you have to install the different dependencies/librairies. To do so run:
+Before being able to start the project, you have to install the different dependencies/libraries. To do so run:
 
 ```` script
 # if npm
@@ -254,7 +254,15 @@ You can find a table of key differences [here](https://angular.io/guide/forms-ov
 For this project, I have chosen to use [Reactive forms](https://angular.io/guide/reactive-forms) for all the advantages it comes with like having a strcutered data model or taking advantage of synchronicity between your template (view/html) and you controller (component class/model). Besides, generally, in big projects you may have complex forms and the `reactive forms` makes the task build them easier for you.
 
 ## Styling: Bootstrap
-ng-bootstrap
+When you launch your project you can base it first on an already existing styling library. It helps you save time when styling your application. 
+
+Here are some examples of libraries you can use :
+* [Bootstrap](https://getbootstrap.com/): it is not specific to Angular. You can use whatever framework you use. And to make using it easier in Angular projects you may use [ng-bootstrap](https://ng-bootstrap.github.io/#/home) library.
+* [Angular Material](https://material.angular.io/): Angular specific. Gives acces to material deisgn components for Angular.
+* [Zurb Foundation](https://foundation.zurb.com/): examples of Foundation components for sites [here](https://foundation.zurb.com/sites/docs/kitchen-sink.html).
+* [Material](https://material.io/develop/web/components/animation/).
+
+Actually, for this project it is `bootstrap` which was used (not `ng-boostrap`).
 
 ## NGXS and Facade pattern
 
@@ -266,7 +274,7 @@ In an app where data is shared among components, it might be confusing to actual
 
 The way a state management library works is simple. There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another.
 
-For example, for [React](https://reactjs.org/) one of the most used state management libraries is [Redux](https://redux.js.org/). And the use of the [react-redux](https://github.com/reduxjs/react-redux) package makes it easier. For sure, you have other state management librairies for `react` like [facebook's flux](https://github.com/facebook/flux). So choose what suits you most knwoing that `redux` is more used that `flux` because it is not centred on `react` and can be used with any other view library.
+For example, for [React](https://reactjs.org/) one of the most used state management libraries is [Redux](https://redux.js.org/). And the use of the [react-redux](https://github.com/reduxjs/react-redux) package makes it easier. For sure, you have other state management libraries for `react` like [facebook's flux](https://github.com/facebook/flux). So choose what suits you most knwoing that `redux` is more used that `flux` because it is not centred on `react` and can be used with any other view library.
 
 For `angular` you have many options for state management like:
 * [NGXS](https://github.com/ngxs/store): NGXS is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
@@ -291,6 +299,16 @@ The facade pattern is a [software-design pattern](https://en.wikipedia.org/wiki/
 While this seems like a rather trivial change (and an extra layer), the Facade has a huge positive impact of developer productivity and yields significantly less complexity in the view layers ([source](https://medium.com/ngxs/ngxs-facade-3aa90c41497b)).
 
 An other advantage is that it makes your controllers (Angular components for example), independant from the state management library you have chosen to use.
+
+## Internationalization
+
+For the internationalization you have two options:
+
+1 - Use the Angular's [i18n](https://angular.io/guide/i18n) system
+
+2 - Use [ngx-translate](http://www.ngx-translate.com/) library.
+
+I won't go into details, but the choice for this project and many other production like projects was to use `ngx-translate`. The main reasons are that, for the same result, it is simpler to use and develop with and `Angular i18n` forces you to build the application per language and it reloads the application on language change.
 
 ## Further help
 
