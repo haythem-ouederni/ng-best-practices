@@ -1,20 +1,19 @@
 import {CommonValidationMessagesService, FormErrorsUtil, FormGroupFinalErrorsMessages, FormGroupValidationErrorsMessages} from '@abpe/core';
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {merge, Observable, of, Subject, Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, mergeMap} from 'rxjs/operators';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {merge, Observable, of, Subject, Subscription, zip} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, mergeMap, tap} from 'rxjs/operators';
 import {
   DEBOUNCE_TIME,
   INTEGER_PATTERN,
   MAX_POSSIBLE_AGE,
   MIN_POSSIBLE_AGE,
   PWD_MIN_LENGTH,
-  ROUTES_PATHS,
   USERNAME_PATTERN,
 } from '../../connection.constant';
-import {ConnectionService, CONNECTION_PATH} from '../../services';
+import {ConnectionService} from '../../services';
 import {ConnectionFacade} from '../../state';
-import {PasswordValidators, PasswordValidatorsMessages, UsernameValidatorsMessages} from '../../validators';
+import {PasswordValidators, PasswordValidatorsMessagesService, UsernameValidatorsMessagesService} from '../../validators';
 import {UsernameValidators} from '../../validators/username/username-validators';
 
 @Component({
@@ -64,7 +63,9 @@ export class PageOneComponent implements OnInit, OnDestroy {
     private connectionService: ConnectionService,
     private formBuilder: FormBuilder,
     private commonValidationMessages: CommonValidationMessagesService,
-    private facade: ConnectionFacade
+    private facade: ConnectionFacade,
+    private passwordValidatorsMessagesService: PasswordValidatorsMessagesService,
+    private usernameValidatorsMessagesService: UsernameValidatorsMessagesService
   ) {}
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -116,27 +117,44 @@ export class PageOneComponent implements OnInit, OnDestroy {
    * that needs it
    */
   private buildValidationErrors(): void {
-    this.validationErrorMessages = {
-      username: {
-        ...this.commonValidationMessages.validationMessages.required,
-        ...this.commonValidationMessages.validationMessages.invalid,
-        contains: UsernameValidatorsMessages.contains.contains({
-          value: this.username ? this.username.value : null,
-          content: this.usernameContent,
-        }),
-      },
-      password: {
-        ...this.commonValidationMessages.validationMessages.required,
-        minlength: this.commonValidationMessages.validationMessages.length.minlength.minlength({requiredLength: PWD_MIN_LENGTH}),
-        ...PasswordValidatorsMessages.beginsWith,
-      },
-      age: {
-        ...this.commonValidationMessages.validationMessages.required,
-        ...this.commonValidationMessages.validationMessages.numbers.integer.pattern,
-        ...this.commonValidationMessages.validationMessages.numbers.min,
-        ...this.commonValidationMessages.validationMessages.numbers.max,
-      },
-    };
+    const usernameValidatorMessagesObservable: Observable<{
+      contains: (validationErrors: ValidationErrors) => string;
+    }> = this.usernameValidatorsMessagesService.contains();
+
+    const passwordValidatorsMessagesBeginsWithObservable: Observable<{
+      beginsWith: (validationErrors: ValidationErrors) => string;
+    }> = this.passwordValidatorsMessagesService.beginsWith();
+
+    const validationMessagesObservable: Observable<{[key: string]: any}> = this.commonValidationMessages.validationMessages;
+
+    const buildValidationErrorsSubscription: Subscription = zip(
+      usernameValidatorMessagesObservable,
+      passwordValidatorsMessagesBeginsWithObservable,
+      validationMessagesObservable
+    ).subscribe(([usernameValidatorMessages, passwordValidatorsMessagesBeginsWith, validationMessages]) => {
+      this.validationErrorMessages = {
+        username: {
+          ...validationMessages.required,
+          ...validationMessages.invalid,
+          contains: usernameValidatorMessages.contains({
+            value: this.username ? this.username.value : null,
+            content: this.usernameContent,
+          }),
+        },
+        password: {
+          ...validationMessages.required,
+          minlength: validationMessages.length.minlength.minlength({requiredLength: PWD_MIN_LENGTH}),
+          ...passwordValidatorsMessagesBeginsWith,
+        },
+        age: {
+          ...validationMessages.required,
+          ...validationMessages.numbers.integer.pattern,
+          ...validationMessages.numbers.min,
+          ...validationMessages.numbers.max,
+        },
+      };
+    });
+    this.subscriptions.add(buildValidationErrorsSubscription);
   }
 
   /**
@@ -165,8 +183,6 @@ export class PageOneComponent implements OnInit, OnDestroy {
   private initForm(): void {
     // initialize the validation error messages
     this.buildValidationErrors();
-
-    // initialize the form controls
     this.initFormControls();
 
     // we initialize the Group from
@@ -265,6 +281,8 @@ export class PageOneComponent implements OnInit, OnDestroy {
   /////////////////////////////// Form submission ///////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   onSubmit(): void {
+    // force the value update of formErrors => by being into the subscribe
+    this.form.updateValueAndValidity();
     if (this.form.valid) {
       this.isFormSubmittedSuccessfully = true;
     } else {

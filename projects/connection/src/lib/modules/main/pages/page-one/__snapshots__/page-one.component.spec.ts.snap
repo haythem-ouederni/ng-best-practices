@@ -5,18 +5,18 @@ Object {
   "age": Object {
     "max": [Function],
     "min": [Function],
-    "pattern": "Should be an integer",
-    "required": "Required input",
+    "pattern": "common.validators.numbers.integer.pattern",
+    "required": "common.validators.required",
   },
   "password": Object {
     "beginsWith": [Function],
-    "minlength": "The minimal length is 8",
-    "required": "Required input",
+    "minlength": "common.validators.length.min",
+    "required": "common.validators.required",
   },
   "username": Object {
-    "contains": "Must contain ngx",
-    "pattern": "Invalid input",
-    "required": "Required input",
+    "contains": "usernameValidatorsMessagesService contains",
+    "pattern": "common.validators.invalid",
+    "required": "common.validators.required",
   },
 }
 `;
@@ -44,18 +44,20 @@ exports[`PageOneComponent should match snapshot 1`] = `
   ngOnInit={[Function Function]}
   password={[Function FormControl]}
   passwordSubject={[Function Subject]}
+  passwordValidatorsMessagesService={[Function Object]}
   pwdSuffix={[Function String]}
   subscriptions={[Function Subscription]}
   username={[Function FormControl]}
   usernameContent={[Function String]}
   usernameSubject={[Function Subject]}
+  usernameValidatorsMessagesService={[Function Object]}
   validationErrorMessages={[Function Object]}
 >
   <div
     class="alert alert-primary"
     role="alert"
   >
-     Page One testing
+     cnx.page_one.title
   
   </div><form
     class="ng-untouched ng-pristine ng-invalid"
@@ -82,7 +84,7 @@ exports[`PageOneComponent should match snapshot 1`] = `
         formcontrolname="username"
         id="username"
         ng-reflect-name="username"
-        placeholder="Username"
+        placeholder="cnx.page_one.form.username"
         type="text"
       />
     </div>
@@ -97,7 +99,7 @@ exports[`PageOneComponent should match snapshot 1`] = `
         formcontrolname="password"
         id="password"
         ng-reflect-name="password"
-        placeholder="Password"
+        placeholder="cnx.page_one.form.password"
         type="password"
       />
     </div>
@@ -112,7 +114,7 @@ exports[`PageOneComponent should match snapshot 1`] = `
         formcontrolname="age"
         id="age"
         ng-reflect-name="age"
-        placeholder="Age"
+        placeholder="cnx.page_one.form.age"
         type="text"
       />
     </div>
@@ -122,16 +124,16 @@ exports[`PageOneComponent should match snapshot 1`] = `
       id="submit"
       type="submit"
     >
-      Submit
+       common.buttons.submit 
     </button>
   </form><p>
-    Just to make sure cnx-styles is working
+    cnx.page_one.messages.information_text
   </p><div>
     <button
       class="btn btn-success"
       type="button"
     >
-      Go to page two (with information from store)
+       cnx.page_one.buttons.go_to_page_2 
     </button>
   </div>
 </cnx-page-one>

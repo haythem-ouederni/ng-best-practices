@@ -1,0 +1,31 @@
+{
+  "cnx": {
+    "page_one": {
+      "title": "Page Une {{display}}",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "age": "Âge"
+      },
+      "messages": {
+        "information_text": "Juste pour être sûr que cnx-styles fonctionne",
+        "submission_success": "Félicitations! Formulaire soumis avec succès"
+      },
+      "buttons": {
+        "go_to_page_2": "Aller à page 2 (avec informations depuis le Store"
+      }
+    },
+    "page_two": {
+      "title": "Récap Informations Utilisateur",
+      "labels": {
+        "username": "Valeur directe du nom d'utilsateur",
+        "password": "Valeur directe du mot de passe",
+        "age": "Valeur directe de l'âge",
+        "all_information": "Toutes les informations utilisateurs en une seule fois depuis le Store"
+      },
+      "buttons": {
+        "go_to_page_1": "Aller à la page une"
+      }
+    }
+  }
+}

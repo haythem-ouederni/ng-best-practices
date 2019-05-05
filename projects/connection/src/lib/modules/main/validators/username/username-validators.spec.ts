@@ -1,6 +1,8 @@
-import {async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {FormControl, ValidationErrors} from '@angular/forms';
-import {UsernameValidators, UsernameValidatorsMessages} from './username-validators';
+import * as TRANSLATIONS_EN from '@i18n/common/en.json';
+import {TranslateTestingModule} from 'ngx-translate-testing';
+import {UsernameValidators, UsernameValidatorsMessagesService} from './username-validators';
 
 const content = 'my-content';
 
@@ -27,20 +29,43 @@ describe('UsernameValidators', () => {
 });
 
 describe('UsernameValidatorsMessages', () => {
+  let usernameValidatorsMessagesService: UsernameValidatorsMessagesService;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [TranslateTestingModule.withTranslations('fr', TRANSLATIONS_EN)],
+      providers: [UsernameValidatorsMessagesService],
+    });
+  }));
+
+  // initialize services
+  beforeEach(() => {
+    usernameValidatorsMessagesService = TestBed.get(UsernameValidatorsMessagesService);
+  });
+
   describe('#contains', () => {
-    test('should match snapshot when value inquired', () => {
+    test('should match snapshot when value inquired', async(() => {
       const value = 'my-value';
       const validationErrors: ValidationErrors = {
         value,
         content,
       };
-      expect(UsernameValidatorsMessages.contains.contains(validationErrors)).toMatchSnapshot();
-    });
-    test('should match snapshot when value not inquired', () => {
+
+      usernameValidatorsMessagesService
+        .contains()
+        .subscribe((usernameValidatorsMessages: {contains: (validationErrors: ValidationErrors) => string}) => {
+          expect(usernameValidatorsMessages.contains(validationErrors)).toMatchSnapshot();
+        });
+    }));
+    test('should match snapshot when value not inquired', async(() => {
       const validationErrors: ValidationErrors = {
         content,
       };
-      expect(UsernameValidatorsMessages.contains.contains(validationErrors)).toMatchSnapshot();
-    });
+      usernameValidatorsMessagesService
+        .contains()
+        .subscribe((usernameValidatorsMessages: {contains: (validationErrors: ValidationErrors) => string}) => {
+          expect(usernameValidatorsMessages.contains(validationErrors)).toMatchSnapshot();
+        });
+    }));
   });
 });

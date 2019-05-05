@@ -1,14 +1,17 @@
 import {FormErrorsUtil} from '@abpe/core';
 import {SharedModule} from '@abpe/shared';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, ValidationErrors} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
+import * as TRANSLATIONS_EN from '@i18n/app/en.json';
 import {Store} from '@ngxs/store';
 import {ComponentTester, speculoosMatchers, TestButton, TestInput} from 'ngx-speculoos';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 import {of, Subject, Subscription} from 'rxjs';
 import {ConnectionService} from '../../services';
 import {CONNECTION_PATH} from '../../services/token';
 import {ConnectionFacade} from '../../state';
+import {PasswordValidatorsMessagesService, UsernameValidatorsMessagesService} from '../../validators';
 import {PageOneComponent} from './page-one.component';
 
 class PageOneComponentTester extends ComponentTester<PageOneComponent> {
@@ -62,8 +65,24 @@ describe('PageOneComponent', () => {
 
     const facadeMock = jest.fn();
 
+    const passwordValidatorsMessagesServiceMock = jest.fn(() => ({
+      beginsWith: jest.fn().mockReturnValue(
+        of({
+          beginsWith: (_: ValidationErrors) => 'passwordValidatorsMessage beginsWith',
+        })
+      ),
+    }))();
+
+    const usernameValidatorsMessagesServiceMock = jest.fn(() => ({
+      contains: jest.fn().mockReturnValue(
+        of({
+          contains: (_: ValidationErrors) => 'usernameValidatorsMessagesService contains',
+        })
+      ),
+    }))();
+
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ReactiveFormsModule, SharedModule],
+      imports: [RouterTestingModule, ReactiveFormsModule, SharedModule, TranslateTestingModule.withTranslations('fr', TRANSLATIONS_EN)],
       declarations: [PageOneComponent],
       providers: [
         {
@@ -77,6 +96,14 @@ describe('PageOneComponent', () => {
         {
           provide: ConnectionFacade,
           useValue: facadeMock,
+        },
+        {
+          provide: PasswordValidatorsMessagesService,
+          useValue: passwordValidatorsMessagesServiceMock,
+        },
+        {
+          provide: UsernameValidatorsMessagesService,
+          useValue: usernameValidatorsMessagesServiceMock,
         },
       ],
     }).compileComponents();

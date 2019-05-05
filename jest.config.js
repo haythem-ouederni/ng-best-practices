@@ -70,6 +70,7 @@ module.exports = {
     '^@abpe/core': '<rootDir>/projects/core/src/public_api',
     '^@abpe/root/(.*)': '<rootDir>/src/$1',
     '^@abpe/general/(.*)': '<rootDir>/general/$1',
+    "^@i18n/(.*)": '<rootDir>/general/assets/i18n/$1',
   },
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test

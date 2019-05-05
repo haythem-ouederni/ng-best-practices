@@ -22,25 +22,27 @@ export class FormErrorsUtil {
     validationErrorsMessages: FormGroupValidationErrorsMessages
   ): FormGroupFinalErrorsMessages {
     const formErrors: FormGroupFinalErrorsMessages = {};
-    Object.keys(validationErrorsMessages)
-      .filter((key: string) => form.controls[key] && !form.controls[key].pending && form.controls[key].invalid)
-      .forEach((key: string) => {
-        formErrors[key] = [];
-        Object.keys(form.controls[key].errors).forEach((error: string) => {
-          let msg = '';
-          if (typeof validationErrorsMessages[key][error] === 'function') {
-            const msgFunction: ErrorMessageFunction = validationErrorsMessages[key][error] as ErrorMessageFunction;
-            msg = msgFunction(form.controls[key].errors[error]);
-          } else {
-            msg = validationErrorsMessages[key][error] as string;
-          }
-          if (formErrors[key] && formErrors[key].length > 0) {
-            formErrors[key].push(msg);
-          } else {
-            formErrors[key] = [msg];
-          }
+    if (form && validationErrorsMessages) {
+      Object.keys(validationErrorsMessages)
+        .filter((key: string) => form.controls[key] && !form.controls[key].pending && form.controls[key].invalid)
+        .forEach((key: string) => {
+          formErrors[key] = [];
+          Object.keys(form.controls[key].errors).forEach((error: string) => {
+            let msg = '';
+            if (typeof validationErrorsMessages[key][error] === 'function') {
+              const msgFunction: ErrorMessageFunction = validationErrorsMessages[key][error] as ErrorMessageFunction;
+              msg = msgFunction(form.controls[key].errors[error]);
+            } else {
+              msg = validationErrorsMessages[key][error] as string;
+            }
+            if (formErrors[key] && formErrors[key].length > 0) {
+              formErrors[key].push(msg);
+            } else {
+              formErrors[key] = [msg];
+            }
+          });
         });
-      });
+    }
     return formErrors;
   }
 }

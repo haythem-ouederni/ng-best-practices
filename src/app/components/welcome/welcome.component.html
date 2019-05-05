@@ -1,8 +1,13 @@
 <div style="text-align:center">
-  <h1>Production environment : {{env}}</h1>
+  <h1
+    [translate]="'app.env_message'"
+    [translateParams]="{env: env}">
+  </h1>
   <h1>
-    Welcome to {{ title }}!
+    {{ 'app.title' | translate: {title: title} }}
   </h1>
 </div>
 
-<button (click)="goToPageOne()" type="button" class="btn btn-primary">Go to page one</button>
+<button (click)="goToPageOne()" type="button" class="btn btn-primary">
+  {{ 'app.buttons.go_to_page_one' | translate }}
+</button>

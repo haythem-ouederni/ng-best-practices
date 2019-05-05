@@ -1,0 +1,10 @@
+{
+  "app": {
+    "env_message": "Production environment : {{env}}",
+    "title": "Welcome to {{ title }}!",
+    "title_2": "Angular Best Practices Example",
+    "buttons": {
+      "go_to_page_one": "Go to page one"
+    }
+  }
+}

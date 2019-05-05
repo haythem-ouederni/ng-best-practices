@@ -4,12 +4,17 @@ exports[`WelcomeComponent should match snapshot 1`] = `
 <app-welcome
   env="false"
   store={[Function Function]}
+  subscriptions={[Function Subscription]}
   title={[Function String]}
+  translateService={[Function TranslateService]}
 >
   <div
     style="text-align:center"
   >
-    <h1>
+    <h1
+      ng-reflect-translate="app.env_message"
+      ng-reflect-translate-params="[object Object]"
+    >
       Production environment : false
     </h1>
     <h1>
@@ -19,7 +24,8 @@ exports[`WelcomeComponent should match snapshot 1`] = `
     class="btn btn-primary"
     type="button"
   >
-    Go to page one
+     Go to page one
+  
   </button>
 </app-welcome>
 `;

@@ -22,6 +22,9 @@
       "@angular/*": [
         "node_modules/@angular/*"
       ],
+      "@i18n/*": [
+        "general/assets/i18n/*"
+      ],
       // abpe for angular-best-practices-example
       "@abpe/root/*": [
         "src/*"

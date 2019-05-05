@@ -1,8 +1,9 @@
+import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
+import {NgxsModule} from '@ngxs/store';
+import {LanguageState} from './states';
 
 @NgModule({
-  declarations: [],
-  imports: [],
-  exports: [],
+  imports: [HttpClientModule, NgxsModule.forFeature([LanguageState])],
 })
 export class CoreModule {}

@@ -36,5 +36,3 @@ Object {
   },
 }
 `;
-
-exports[`CommonValidationMessages should match snapshot 1`] = `CommonValidationMessagesService {}`;

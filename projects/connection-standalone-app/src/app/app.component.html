@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button 
+      *ngFor="let language of listAvailableLanguage"
+      class="btn"
+      [ngClass]="{'btn-primary': (selectedLanguage == listLanguages[language])}"
+      (click)="changeLanguage(language)"
+      >{{language}}</button>
+  </nav>
+
+  <router-outlet></router-outlet>

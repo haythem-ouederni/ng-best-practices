@@ -1,7 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppComponent should match snapshot 1`] = `
-<app-root>
-  <router-outlet />
+<app-root
+  listAvailableLanguage={[Function Array]}
+  listLanguages={[Function Object]}
+  selectedLanguage={[Function String]}
+  store={[Function Object]}
+>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light"
+  >
+    
+    <button
+      class="btn btn-primary"
+      ng-reflect-klass="btn"
+      ng-reflect-ng-class="[object Object]"
+    >
+      EN
+    </button>
+    <button
+      class="btn"
+      ng-reflect-klass="btn"
+      ng-reflect-ng-class="[object Object]"
+    >
+      FR
+    </button>
+  </nav><router-outlet />
 </app-root>
 `;

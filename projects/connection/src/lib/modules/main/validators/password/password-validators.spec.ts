@@ -1,6 +1,8 @@
-import {async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {FormControl, ValidationErrors} from '@angular/forms';
-import {PasswordValidators, PasswordValidatorsMessages} from './password-validators';
+import * as TRANSLATIONS_EN from '@i18n/common/en.json';
+import {TranslateTestingModule} from 'ngx-translate-testing';
+import {PasswordValidators, PasswordValidatorsMessagesService} from './password-validators';
 
 const prefix = 'my-prefix';
 
@@ -27,20 +29,44 @@ describe('PasswordValidators', () => {
 });
 
 describe('PasswordValidatorsMessages', () => {
+  let passwordValidatorsMessagesService: PasswordValidatorsMessagesService;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [TranslateTestingModule.withTranslations('fr', TRANSLATIONS_EN)],
+      providers: [PasswordValidatorsMessagesService],
+    });
+  }));
+
+  // initialize services
+  beforeEach(() => {
+    passwordValidatorsMessagesService = TestBed.get(PasswordValidatorsMessagesService);
+  });
+
   describe('#beginsWith', () => {
-    test('should match snapshot when value inquired', () => {
+    test('should match snapshot when value inquired', async(() => {
       const value = 'my-value';
       const validationErrors: ValidationErrors = {
         value,
         prefix,
       };
-      expect(PasswordValidatorsMessages.beginsWith.beginsWith(validationErrors)).toMatchSnapshot();
-    });
-    test('should match snapshot when value not inquired', () => {
+
+      passwordValidatorsMessagesService
+        .beginsWith()
+        .subscribe((passwordValidatorsMessages: {beginsWith: (validationErrors: ValidationErrors) => string}) => {
+          expect(passwordValidatorsMessages.beginsWith(validationErrors)).toMatchSnapshot();
+        });
+    }));
+
+    test('should match snapshot when value not inquired', async(() => {
       const validationErrors: ValidationErrors = {
         prefix,
       };
-      expect(PasswordValidatorsMessages.beginsWith.beginsWith(validationErrors)).toMatchSnapshot();
-    });
+      passwordValidatorsMessagesService
+        .beginsWith()
+        .subscribe((passwordValidatorsMessages: {beginsWith: (validationErrors: ValidationErrors) => string}) => {
+          expect(passwordValidatorsMessages.beginsWith(validationErrors)).toMatchSnapshot();
+        });
+    }));
   });
 });

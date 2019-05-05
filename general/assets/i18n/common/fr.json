@@ -1,0 +1,33 @@
+{
+  "common": {
+    "validators": {
+      "required": "Champ obligatoire",
+      "invalid": "Champ non valide",
+      "length": {
+        "min": "La longueur minimale est {{min}}",
+        "max": "La longueur maximale est {{max}}"
+      },
+      "numbers": {
+        "decimal": {
+          "pattern": "Doit être un chiffre"
+        },
+        "integer": {
+          "pattern": "Doit être un entier"
+        },
+        "min": "La valeur minimale est {{min}}",
+        "max": "La valeur maximale est {{max}}"
+      },
+      "begins_with": {
+        "1": "{{value}} doit commencer par {{prefix}}",
+        "2": "Doit commencer par {{prefix}}"
+      },
+      "contains": {
+        "1": "{{value}} doit contenir {{content}}",
+        "2": "Doit contenir {{content}}"
+      }
+    },
+    "buttons": {
+      "submit": "Soumettre"
+    }
+  }
+}

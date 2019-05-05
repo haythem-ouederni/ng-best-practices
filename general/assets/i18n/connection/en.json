@@ -1,0 +1,31 @@
+{
+  "cnx": {
+    "page_one": {
+      "title": "Page One {{display}}",
+      "form": {
+        "username": "Username",
+        "password": "Password",
+        "age": "Age"
+      },
+      "messages": {
+        "information_text": "Just to make sure cnx-styles is working",
+        "submission_success": "Congrats! Form successfully submitted"
+      },
+      "buttons": {
+        "go_to_page_2": "Go to page two (with information from store)"
+      }
+    },
+    "page_two": {
+      "title": "User Information Recap",
+      "labels": {
+        "username": "Direct username value",
+        "password": "Direct password value",
+        "age": "Direct age value",
+        "all_information": "All the user information from the state at once"
+      },
+      "buttons": {
+        "go_to_page_1": "Go to page one"
+      }
+    }
+  }
+}

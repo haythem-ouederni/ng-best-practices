@@ -1,24 +1,26 @@
 <div class="alert alert-success" role="alert">
-  User Information Recap
+  {{'cnx.page_two.title' | translate }}
 </div>
 
 <div>
-  Direct username value : <span class="badge badge-primary">{{username$ | async}}</span>
+  {{'cnx.page_two.labels.username' | translate }} : <span class="badge badge-primary">{{username$ | async}}</span>
 </div>
 
 <div>
-  Direct password value : <span class="badge badge-secondary">{{password$ | async}}</span>
+  {{'cnx.page_two.labels.password' | translate }} : <span class="badge badge-secondary">{{password$ | async}}</span>
 </div>
 
 <div>
-  Direct age value : <span class="badge badge-success">{{age$ | async}}</span>
+  {{'cnx.page_two.labels.age' | translate }} : <span class="badge badge-success">{{age$ | async}}</span>
 </div>
 
 <div>
-  <p>All the user information from the state at once :</p>
+  <p>{{'cnx.page_two.labels.all_information' | translate }} :</p>
   <p><span class="badge badge-info">{{userInformation$ | async | json}}</span></p>
 </div>
 
 <div>
-  <button (click)="goToPageOne()" class="btn btn-success" type="button">Go to page one</button>
+  <button (click)="goToPageOne()" class="btn btn-success" type="button">
+    {{'cnx.page_two.buttons.go_to_page_1' | translate }}
+  </button>
 </div>

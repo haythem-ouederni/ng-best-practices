@@ -1,12 +1,11 @@
 <div class="alert alert-primary" role="alert">
-  Page One {{display}}
+  {{ 'cnx.page_one.title' | translate: {display: 'Tests'} }}
 </div>
 
 <!-- Block to display when the form is successfully submitted -->
 <div *ngIf="isFormSubmittedSuccessfully" class="alert alert-success">
-  Congrats! Form successfully submitted
+  {{'cnx.page_one.messages.submission_success' | translate}}
 </div>
-
 <form 
   [formGroup]="form"
   #connectionForm="ngForm"
@@ -25,7 +24,7 @@
       formControlName="username" 
       (input)="onChangeUsername()"
       class="form-control" 
-      placeholder="Username" 
+      placeholder="{{'cnx.page_one.form.username' | translate}}" 
       aria-label="Username" 
       aria-describedby="basic-addon1">
   </div>
@@ -47,7 +46,7 @@
       formControlName="password" 
       (input)="onChangePassword()"
       class="form-control" 
-      placeholder="Password" 
+      placeholder="{{'cnx.page_one.form.password' | translate}}" 
       aria-label="Password" 
       aria-describedby="basic-addon1"
       >
@@ -70,7 +69,7 @@
       formControlName="age" 
       (input)="onChangeAge()"
       class="form-control" 
-      placeholder="Age" 
+      placeholder="{{'cnx.page_one.form.age' | translate}}" 
       aria-label="Age" 
       aria-describedby="basic-addon1">
   </div>
@@ -84,11 +83,15 @@
     </span>
   </div>
   
-  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+  <button type="submit" class="btn btn-primary" id="submit">
+    {{'common.buttons.submit' | translate}}
+  </button>
 </form>
 
-<p>Just to make sure cnx-styles is working</p>
+<p>{{'cnx.page_one.messages.information_text' | translate}}</p>
 
 <div>
-  <button (click)="goToPageTwo()" class="btn btn-success" type="button">Go to page two (with information from store)</button>
+  <button (click)="goToPageTwo()" class="btn btn-success" type="button">
+    {{'cnx.page_one.buttons.go_to_page_2' | translate}}
+  </button>
 </div>

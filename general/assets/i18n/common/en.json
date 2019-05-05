@@ -1,0 +1,33 @@
+{
+  "common": {
+    "validators": {
+      "required": "Required input",
+      "invalid": "Invalid input",
+      "length": {
+        "min": "The minimal length is {{min}}",
+        "max": "The maximal length is {{max}}"
+      },
+      "numbers": {
+        "decimal": {
+          "pattern": "Should be a number"
+        },
+        "integer": {
+          "pattern": "Should be an integer"
+        },
+        "min": "The minimal value is {{min}}",
+        "max": "The minimal value is {{max}}"
+      },
+      "begins_with": {
+        "1": "{{value}} must begin with {{prefix}}",
+        "2": "Must begin with {{prefix}}"
+      },
+      "contains": {
+        "1": "{{value}} must contain {{content}}",
+        "2": "Must contain {{content}}"
+      }
+    },
+    "buttons": {
+      "submit": "Submit"
+    }
+  }
+}

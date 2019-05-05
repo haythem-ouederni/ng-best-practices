@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
+import {Observable, pipe} from 'rxjs';
+import {map} from 'rxjs/operators';
 /**
  * CommonValidatorMessagesService must be provided at each using module.
  * And tha calling module must load the common/fr.json file in addiction
@@ -14,7 +17,7 @@ import {ValidationErrors} from '@angular/forms';
   providedIn: 'root',
 })
 export class CommonValidationMessagesService {
-  private _validationMessages: {[key: string]: any};
+  private _validationMessages: Observable<{[key: string]: any}>;
 
   get validationMessages() {
     if (!this._validationMessages) {
@@ -23,43 +26,51 @@ export class CommonValidationMessagesService {
     return this._validationMessages;
   }
 
+  constructor(private translateService: TranslateService) {}
+
   /**
    * Method called to initialize the common validation messages
    */
   private initializeValidationMessage() {
-    this._validationMessages = {
-      required: {
-        required: 'Required input',
-      },
-      invalid: {
-        pattern: 'Invalid input',
-      },
-      length: {
-        minlength: {
-          minlength: (validationErrors: ValidationErrors) => `The minimal length is ${validationErrors.requiredLength}`,
+    // the call to stream with placeholder key (which is a fake key) is used to be sure we
+    // have a translation when calling instant
+    this._validationMessages = this.translateService.stream('fake-placehold').pipe(
+      map(() => ({
+        required: {
+          required: this.translateService.instant('common.validators.required'),
         },
-        maxlength: {
-          maxlength: (validationErrors: ValidationErrors) => `The maximal length is ${validationErrors.requiredLength}`,
+        invalid: {
+          pattern: this.translateService.instant('common.validators.invalid'),
         },
-      },
-      numbers: {
-        decimal: {
-          pattern: {
-            pattern: 'Should be a number',
+        length: {
+          minlength: {
+            minlength: (validationErrors: ValidationErrors) =>
+              this.translateService.instant('common.validators.length.min', {min: validationErrors.requiredLength}),
+          },
+          maxlength: {
+            maxlength: (validationErrors: ValidationErrors) =>
+              this.translateService.instant('common.validators.length.max', {max: validationErrors.requiredLength}),
           },
         },
-        integer: {
-          pattern: {
-            pattern: 'Should be an integer',
+        numbers: {
+          decimal: {
+            pattern: {
+              pattern: this.translateService.instant('common.validators.numbers.decimal.pattern'),
+            },
+          },
+          integer: {
+            pattern: {
+              pattern: this.translateService.instant('common.validators.numbers.integer.pattern'),
+            },
+          },
+          min: {
+            min: (validationErrors: any) => this.translateService.instant('common.validators.numbers.min', {min: validationErrors.min}),
+          },
+          max: {
+            max: (validationErrors: any) => this.translateService.instant('common.validators.numbers.max', {max: validationErrors.max}),
           },
         },
-        min: {
-          min: (validationErrors: any) => `The minimal value is ${validationErrors.min}`,
-        },
-        max: {
-          max: (validationErrors: any) => `The maximal value is ${validationErrors.max}`,
-        },
-      },
-    };
+      }))
+    );
   }
 }

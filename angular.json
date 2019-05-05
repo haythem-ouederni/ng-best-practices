@@ -24,7 +24,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./general/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -171,7 +176,12 @@
             "tsConfig": "projects/connection-standalone-app/tsconfig.app.json",
             "assets": [
               "projects/connection-standalone-app/src/favicon.ico",
-              "projects/connection-standalone-app/src/assets"
+              "projects/connection-standalone-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./general/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "projects/connection-standalone-app/src/styles.scss"

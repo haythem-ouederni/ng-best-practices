@@ -51,7 +51,7 @@ exports[`PageTwoComponent should match snapshot 1`] = `
       class="btn btn-success"
       type="button"
     >
-      Go to page one
+       Go to page one 
     </button>
   </div>
 </cnx-page-two>
