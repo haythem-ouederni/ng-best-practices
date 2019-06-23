@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
 import * as merge from 'deepmerge';
-import {forkJoin, Observable, of} from 'rxjs';
+import {forkJoin, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 export interface ITranslationResource {
@@ -22,8 +22,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
       const path = resource.prefix + lang + resource.suffix;
       return this.http.get(path).pipe(
         catchError(() => {
-          console.error(TRANSLATION_FILE_NOT_FOUND, path);
-          return of({});
+          return throwError(`${TRANSLATION_FILE_NOT_FOUND} : ${path}`);
         })
       );
     });

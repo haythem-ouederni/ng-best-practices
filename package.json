@@ -27,9 +27,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:connection": "ng serve connection-standalone-app",
     "start:aot": "ng serve --aot",
+    "start:connection": "ng serve connection-standalone-app",
+    "start:connection:aot": "ng serve connection-standalone-app --aot",
     "build": "ng build",
+    "build:core": "ng build core",
+    "build:shared": "ng build shared",
     "build:prod": "ng build --prod --base-href /",
     "test": "yarn test:all",
     "test:all": "jest",

@@ -17,7 +17,7 @@ export class LanguageUtilsService {
     // No check on libName is done because we can't throw an exception due
     // to the signature of the loader and that we won't use a common internationalization
     // json file on the other hand
-    return this.multiHttpLoaderFactory([libName]);
+    return LanguageUtilsService.multiHttpLoaderFactory([libName]);
   }
 
   /**

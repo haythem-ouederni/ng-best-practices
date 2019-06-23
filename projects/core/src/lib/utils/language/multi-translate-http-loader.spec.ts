@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
-import {ITranslationResource, MultiTranslateHttpLoader} from './multi-translate-http-loader';
+import {ITranslationResource, MultiTranslateHttpLoader, TRANSLATION_FILE_NOT_FOUND} from './multi-translate-http-loader';
 
 describe('MultiTranslateHttpLoader', () => {
   let httpClient: HttpClient;
@@ -94,10 +94,16 @@ describe('MultiTranslateHttpLoader', () => {
     test('should return empty object when file not found', done => {
       const multiTranslateHttpLoader = new MultiTranslateHttpLoader(httpClient, [translationResource1]);
       const path: string = translationResource1.prefix + language + translationResource1.suffix;
-      multiTranslateHttpLoader.getTranslation(language).subscribe(traductions => {
-        expect(traductions).toEqual({});
-        done();
-      });
+      multiTranslateHttpLoader.getTranslation(language).subscribe(
+        traductions => {
+          expect(true).toEqual(false);
+          done();
+        },
+        error => {
+          expect(error).toEqual(`${TRANSLATION_FILE_NOT_FOUND} : ${path}`);
+          done();
+        }
+      );
       const request1 = httpTestingController.expectOne(path);
 
       // Respond with mock error
