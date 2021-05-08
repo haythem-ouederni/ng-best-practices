@@ -106,7 +106,7 @@
     "jest": "^24.1.0",
     "jest-preset-angular": "^6.0.2",
     "lint-staged": "^8.1.3",
-    "ng-packagr": "^4.2.0",
+    "ng-packagr": "^10.1.1",
     "ngx-speculoos": "^1.1.0",
     "ngx-translate-testing": "^2.0.0",
     "prettier": "^1.16.4",
